@@ -14,6 +14,7 @@ const openai = new OpenAIApi(config)
 router.post("/", async(req, res) => {
   try {
     const { prompt } = req.body
+    console.log(prompt);
     const aiResponse = await openai.createImage({
       prompt,
       n: 1,
@@ -21,14 +22,13 @@ router.post("/", async(req, res) => {
       response_format: "b64_json"
     })
 
-    //console.log(aiResponse.data.data)
-
 
     const image = aiResponse.data.data[0].b64_json
     res.status(200).json({ photo: image })
 
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+
     res.status(500).send(error?.response.data.error.message)
   }
 } )

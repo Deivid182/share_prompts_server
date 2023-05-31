@@ -3,15 +3,15 @@ import mongoose from "mongoose";
 const postSchema = mongoose.Schema({
   name: {
     type: String,
-    requied: true
+    required: true
   },
   prompt: {
     type: String,
-    requied: true
+    required: true
   },
   photo: {
     type: String,
-    requied: true
+    required: true
   },
 }, {timestamps: true})
 
